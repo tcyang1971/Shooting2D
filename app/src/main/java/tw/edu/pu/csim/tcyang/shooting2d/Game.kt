@@ -16,10 +16,13 @@ class Game(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs
     var BG: Bitmap
     var BGmoveX:Int = 0
 
+    var fly: Fly
+
     init {
         surfaceHolder = getHolder()
         BG = BitmapFactory.decodeResource(getResources(), R.drawable.background)
         surfaceHolder.addCallback(this)
+        fly = Fly(context!!)
     }
 
     override fun surfaceCreated(p0: SurfaceHolder) {
@@ -59,5 +62,6 @@ class Game(context: Context?, attrs: AttributeSet?) : SurfaceView(context, attrs
             canvas.drawBitmap(BG, SrcRect, DestRect, null)
         }
 
+        fly.draw(canvas)
     }
 }
